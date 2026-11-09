@@ -2,6 +2,24 @@
 
 基于 LibXR/xrobot 的云台 Yaw 轴控制模块：LQR 状态反馈、角度误差积分、三阶线性 ESO 扰动估计与补偿。
 
+## MATLAB / Simulink 双 Yaw 仿真
+
+[matlab/dual_yaw_lqr](matlab/dual_yaw_lqr/README.md) 提供大、小 Yaw 耦合系统的
+可编辑 Simulink 模型、2×4 LQR 增益求解、参考轨迹、力矩限幅及响应绘图。
+在仓库根目录启动 MATLAB，执行：
+
+```matlab
+cd(fullfile(pwd, 'matlab', 'dual_yaw_lqr'))
+run_dual_yaw_lqr
+```
+
+也可直接打开 [dual_yaw_lqr.slx](matlab/dual_yaw_lqr/dual_yaw_lqr.slx) 并运行。
+需要 MATLAB、Simulink 和 Control System Toolbox，已在 R2024a 中验证。
+参数入口为 `dual_yaw_parameters.m`；惯量采用参考文章的 CAD 值，Q/R 为演示整定。
+该仿真使用双轴 LQR；下方 `LqrEso.hpp` 提供单轴 LQR/ESO 控制器。
+
+![双 Yaw 模型框图](matlab/dual_yaw_lqr/dual_yaw_model.png)
+
 ## 来源
 
 核心代码来自本地 `LQR-ESO TEST/Modules/LqrEso/LqrEso.hpp`。

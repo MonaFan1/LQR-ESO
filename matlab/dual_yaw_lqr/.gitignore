@@ -1,0 +1,7 @@
+slprj/
+*.slxc
+*.autosave
+*.slx.r20*
+
+*.mat
+*.log
